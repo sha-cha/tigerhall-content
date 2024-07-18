@@ -13,13 +13,20 @@ import {
     Tag,
     TagLeftIcon,
     TagLabel
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
+import { Podcast } from '../dataAccess/types';
+import { getCategories, getCompanyNames, getTimeLabel, getUserNames } from '../dataAccess/util';
 
-function ContentItemComponent() {
+interface ContentItemProps {
+    podcastItem: Podcast
+}
+
+function ContentItemComponent({ podcastItem }: ContentItemProps) {
     return (
         <Card
             padding={0}
             borderRadius="8px"
+            height="272px"
         >
             <Box position="relative">
                 <Tag
@@ -55,13 +62,15 @@ function ContentItemComponent() {
                     lineHeight="14.4px"
                 >
                     <TagLeftIcon boxSize='12px' as={TimeIcon} />
-                    <TagLabel>20m</TagLabel>
+                    <TagLabel>{getTimeLabel(podcastItem.length)}</TagLabel>
                 </Tag>
 
                 <Image
-                    src='/temp-bg.png'
-                    alt='Green double couch with wooden legs'
+                    src={podcastItem.image.uri}
                     width="100%"
+                    height="120px"
+                    borderRadius="8px"
+                    borderBottomRadius="0px"
                 />
                 <Image
                     src='/headphone.svg'
@@ -75,20 +84,22 @@ function ContentItemComponent() {
                 <Progress value={30} size='xs' colorScheme='tigerOrange' />
             </Box>
             <CardBody
-                padding={0}>
+                padding={0}
+                flex="initial"
+                minHeight="calc(100% - 164px)">
                 <Stack m={[2, 4]} gap={2} >
                     <Heading
                         fontSize='12px'
                         color='grey.700'
                     >
-                        COMMUNICATING AS A LEADER
+                        {getCategories(podcastItem.categories)}
                     </Heading>
                     <Text
                         fontSize="16px"
                         fontWeight="700"
                         lineHeight="19.2px"
                         color='#000;'>
-                        Peak Performance: Going From Good to Great with Simon Taudel
+                        {podcastItem.name}
                     </Text>
                     <Stack gap={0}>
                         <Text
@@ -97,7 +108,7 @@ function ContentItemComponent() {
                             lineHeight="14.4px"
                             color='grey.800'
                         >
-                            Jane Dow
+                           {getUserNames(podcastItem.experts)}
                         </Text>
                         <Text
                             fontSize="12px"
@@ -105,13 +116,13 @@ function ContentItemComponent() {
                             lineHeight="14.4px"
                             color='grey.700;'
                         >
-                            Subway APAC
+                            {getCompanyNames(podcastItem.experts)}
                         </Text>
                     </Stack>
                 </Stack>
             </CardBody>
             <CardFooter
-                padding={[0, 4]}
+                padding={[2, 2]}
                 display="flex"
                 justifyContent="flex-end">
                 <ButtonGroup spacing='2'>
