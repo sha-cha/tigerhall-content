@@ -44,6 +44,10 @@ const ContentComponent = ({ searchKey }: ContentProp) => {
 	}, [loading, hasMore]);
 
 	useEffect(() => {
+		setOffset(0);
+	}, [searchKey]);
+
+	useEffect(() => {
 		const fetchData = async () => {
 			setLoading(true);
 			setError(false);
@@ -54,9 +58,9 @@ const ContentComponent = ({ searchKey }: ContentProp) => {
 				const processedData: Podcast[] = _processPodcastData(data.contentCards.edges);
 
 				if (offset === 0) {
-					setPodcastData(processedData); // Set initial data
+					setPodcastData(processedData); 
 				} else {
-					setPodcastData((prevData) => [...prevData, ...processedData]); // Append new data
+					setPodcastData((prevData) => [...prevData, ...processedData]); 
 				}
 
 				setHasMore(processedData.length === limit);
