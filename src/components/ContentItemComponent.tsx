@@ -44,8 +44,13 @@ function ContentItemComponent({ podcastItem }: ContentItemProps) {
                     lineHeight="14.4px"
                     color='grey.900'
                 >
-                    <TagLeftIcon boxSize='12px' as={TimeIcon} />
-                    <TagLabel>30% completed</TagLabel>
+                    <Image
+                        mr={1}
+                        h="12px"
+                        w="12px"
+                        src='/icons/progress.svg'
+                    />
+                    <TagLabel>30% Completed</TagLabel>
                 </Tag>
                 <Tag
                     position="absolute"
@@ -73,7 +78,7 @@ function ContentItemComponent({ podcastItem }: ContentItemProps) {
                     borderBottomRadius="0px"
                 />
                 <Image
-                    src='/headphone.svg'
+                    src='/icons/headphone.svg'
                     position="absolute"
                     h="24px"
                     w="24px"
@@ -108,7 +113,7 @@ function ContentItemComponent({ podcastItem }: ContentItemProps) {
                             lineHeight="14.4px"
                             color='grey.800'
                         >
-                           {getUserNames(podcastItem.experts)}
+                            {getUserNames(podcastItem.experts)}
                         </Text>
                         <Text
                             fontSize="12px"
@@ -127,12 +132,12 @@ function ContentItemComponent({ podcastItem }: ContentItemProps) {
                 justifyContent="flex-end">
                 <ButtonGroup spacing='2'>
                     <Image
-                        src='/share.svg'
+                        src='/icons/share.svg'
                         alt="Logo"
                         mr={2}
                     />
                     <Image
-                        src='/bookmark.svg'
+                        src='/icons/bookmark.svg'
                         alt="Logo"
                         mr={2}
                     />

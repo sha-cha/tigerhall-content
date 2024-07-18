@@ -4,7 +4,6 @@ import {
     InputGroup,
     InputLeftElement,
     Image,
-    Spacer,
     useBreakpointValue
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
@@ -17,9 +16,9 @@ interface HeaderProp {
 const HeaderComponent = ({ onSearch }: HeaderProp) => {
     const [searchTerm, setSearchTerm] = useState('');
     const logoSrc = useBreakpointValue({
-        base: "/tigerhall.svg",
-        sm: "/tigerhall.svg",
-        md: "/tigerhall-horizontal-logo.svg",
+        base: "/icons/tigerhall.svg",
+        sm: "/icons/tigerhall.svg",
+        md: "/icons/tigerhall-horizontal-logo.svg",
     });
 
     useEffect(() => {
